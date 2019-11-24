@@ -1,0 +1,15 @@
+{
+    "events": [{
+        "id": "1",
+        "imageLink": "http://dv-massiv.com/wp-content/uploads/noavatar.png",
+        "title": "Мисс ИТМО",
+        "description": "Самый популярный конкурс, когда либо проводимый командой Университета ИТМО. Ежегодной проводится в концерт зале \"Мюзик холл\"",
+        "date": null
+    },{
+        "id": "2",
+        "imageLink": "https://1stwebdesigner.com/wp-content/uploads/2013/12/fnal2-570x456.png",
+        "title": "Мисс ИТМО 20'",
+        "description": "Самый популярный конкурс, когда либо проводимый командой Университета ИТМО. Ежегодной проводится в концерт зале \"Мюзик холл\"",
+        "date": null
+    }]
+}
