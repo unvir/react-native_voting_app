@@ -4,7 +4,7 @@ import {
     StatusBar,
     Image
 } from 'react-native';
-import ListItemRenderer from '../components/eventsListItem';
+import { ListItemEvents } from '../components';
 import { Container,
     Content,
     Grid,
@@ -15,9 +15,6 @@ import { Container,
     Body,
     Right,
     List,
-    Thumbnail,
-    ListItem,
-    Text,
     Title,
     Icon,
     Button} from 'native-base';
@@ -30,7 +27,7 @@ export default function Profile(): ReactElement {
             <StatusBar barStyle="light-content" backgroundColor="#343434" />
             <Container>
             <Header span>
-                <Image source={require('../assets/bg2.jpg')}
+                <Image source={ require('../assets/bg2.jpg') }
                             style={{ position: 'absolute', top: 0, left: 0, width: '130%', height: '100%' }}
                             resizeMode='cover' />
                 <Left />
@@ -42,18 +39,18 @@ export default function Profile(): ReactElement {
                         <Icon name="settings" />
                     </Button>
                 </Right>
-                </Header>
-                <Content padder style={{ backgroundColor: '#ffffff' }}>
-                    <Grid>
-                        <Row>
-                            <Col>
-                                <List dataArray={eventsStub}
-                                    renderRow={ListItemRenderer}
-                                    keyExtractor={item => item.id} />
-                            </Col>
-                        </Row>
-                    </Grid>
-                </Content>
+            </Header>
+            <Content padder style={{ backgroundColor: '#ffffff' }}>
+                <Grid>
+                    <Row>
+                        <Col>
+                            <List dataArray={ eventsStub }
+                                renderRow={ ListItemEvents }
+                                keyExtractor={ item => item.id } />
+                        </Col>
+                    </Row>
+                </Grid>
+            </Content>
             </Container>
         </>
     );

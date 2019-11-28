@@ -7,8 +7,7 @@ import { Left,
     Text} from 'native-base';
 import NavigationService from '../navigationService';
 
-
-export default function listItemRenderer(props: object) {
+export default function ListItemEvents(props: object): ReactElement {
     const {imageLink, title, description} = props;
     const date = props.date || new Date();
     const day = date.getDate();
@@ -19,7 +18,7 @@ export default function listItemRenderer(props: object) {
     const dateString = `${(day < 10 ? '0' : '') + day}.${(month < 10 ? '0' : '') + month}.${year % 100}`;
     const timeString = `${(hours < 10 ? '0' : '') + hours}:${(minutes < 10 ? '0' : '') + minutes}`;
     return (
-        <ListItem onPress={() => NavigationService.navigate('Event')}>
+        <ListItem onPress={() => NavigationService.navigate('Event', {...props, dateString, timeString})}>
             <Left style={{ flexGrow: 2 }}>
                 <Thumbnail source={{ uri: imageLink }} />
             </Left>

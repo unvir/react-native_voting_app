@@ -19,6 +19,19 @@ function navigate(routeName: string, params?: object) {
     );
 }
 
+function getParam(key: string, defaultValue?: any) {
+    if (_navigator === null) {
+        return;
+    }
+
+    _navigator.dispatch(
+        NavigationActions.navigate({
+            routeName,
+            params,
+        })
+    );
+}
+
 export default {
   navigate,
   setTopLevelNavigator,

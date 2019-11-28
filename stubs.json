@@ -4,12 +4,36 @@
         "imageLink": "http://dv-massiv.com/wp-content/uploads/noavatar.png",
         "title": "Мисс ИТМО",
         "description": "Самый популярный конкурс, когда либо проводимый командой Университета ИТМО. Ежегодной проводится в концерт зале \"Мюзик холл\"",
-        "date": null
+        "location": "г. Санкт-Петербург, Кронверкский пр-т 99, театр \"Мюзик-холл\"",
+        "date": null,
+        "participants": [
+            {
+                "id": "1",
+                "fullName": "Иванов Иван",
+                "avatar": "https://cdn.iconscout.com/icon/free/png-256/user-1908-879836.png"
+            }, {
+                "id": "2",
+                "fullName": "Васильев Василий",
+                "avatar": "https://cdn.iconscout.com/icon/free/png-256/user-1909-879837.png"
+            }
+        ]
     },{
         "id": "2",
         "imageLink": "https://1stwebdesigner.com/wp-content/uploads/2013/12/fnal2-570x456.png",
         "title": "Мисс ИТМО 20'",
         "description": "Самый популярный конкурс, когда либо проводимый командой Университета ИТМО. Ежегодной проводится в концерт зале \"Мюзик холл\"",
-        "date": null
+        "location": "г. Санкт-Петербург, Кронверкский пр-т 100500, театр \"Мюзик-холл\"",
+        "date": null,
+        "participants": [
+            {
+                "id": "1",
+                "fullName": "Иванов Иван",
+                "avatar": "https://cdn.iconscout.com/icon/free/png-256/user-1908-879836.png"
+            }, {
+                "id": "2",
+                "fullName": "Васильев Василий",
+                "avatar": "https://cdn.iconscout.com/icon/free/png-256/user-1909-879837.png"
+            }
+        ]
     }]
 }

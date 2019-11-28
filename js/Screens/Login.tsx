@@ -17,7 +17,7 @@ import { Container,
     Input } from 'native-base';
 import NavigationService from '../navigationService';
 
-export default function Login(props: object): ReactElement {
+export default function Login(): ReactElement {
     return (
         <>
             <StatusBar barStyle="light-content" backgroundColor="#343434" />
