@@ -1,34 +1,39 @@
 interface IEventParticipant {
     id: string;
     fullName: string;
-    avater: string;
+    avatar: string;
 }
+
+interface IEvent {
+    id: string;
+    imageLink: string;
+    title: string;
+    description: string;
+    location?: string;
+    date: Date | null;
+    participants?: IEventParticipant
+}
+
+export interface IListItemParticipantsProps extends IEventParticipant { }
+export interface IListItemEventsProps extends IEvent { }
 
 export interface ITabEventParticipantsProps {
     participants: IEventParticipant[]
 }
 
 export interface ITabEventInfoProps {
-    title: string;
-    description: string;
     dateString: string;
     timeString: string;
-    location?: string;
-}
-
-export interface IListItemParticipantsProps {
-    fullName: string;
-    avatar: string;
-}
-
-export interface IListItemEventsProps {
-    title: string;
+    location: string;
     description: string;
-    imageLink: string;
-    date: Date | null;
 }
 
 export interface IProgressBarProps {
     progress: number;
     textInfo?: boolean;
+}
+
+export interface IParticipantScoringRadioFormProps {
+    maxValue: number;
+    defaultValue: number;
 }
