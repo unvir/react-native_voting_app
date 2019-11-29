@@ -6,8 +6,9 @@ import { Left,
     ListItem,
     Text} from 'native-base';
 import NavigationService from '../navigationService';
+import { IListItemEventsProps } from './interfaces';
 
-export default function ListItemEvents(props: object): ReactElement {
+export default function ListItemEvents(props: IListItemEventsProps): ReactElement {
     const {imageLink, title, description} = props;
     const date = props.date || new Date();
     const day = date.getDate();
@@ -23,8 +24,8 @@ export default function ListItemEvents(props: object): ReactElement {
                 <Thumbnail source={{ uri: imageLink }} />
             </Left>
             <Body style={{ flexGrow: 6 }}>
-                <Text numberOfLines={1}>{ title }</Text>
-                <Text note numberOfLines={2} ellipsizeMode='tail'>{ description }</Text>
+                <Text numberOfLines={ 1 }>{ title }</Text>
+                <Text note numberOfLines={ 2 } ellipsizeMode='tail'>{ description }</Text>
             </Body>
             <Right style={{ flexGrow: 2 }}>
                 <Text note>{ dateString }</Text>

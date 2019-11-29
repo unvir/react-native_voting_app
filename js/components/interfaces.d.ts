@@ -17,9 +17,15 @@ export interface ITabEventInfoProps {
 }
 
 export interface IListItemParticipantsProps {
-    id: string;
     fullName: string;
     avatar: string;
+}
+
+export interface IListItemEventsProps {
+    title: string;
+    description: string;
+    imageLink: string;
+    date: Date | null;
 }
 
 export interface IProgressBarProps {
