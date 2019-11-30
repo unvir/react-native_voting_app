@@ -33,7 +33,11 @@ export interface IProgressBarProps {
     textInfo?: boolean;
 }
 
+export interface IParticipantScoringRadioFormState {
+    active: number;
+}
+
 export interface IParticipantScoringRadioFormProps {
-    maxValue: number;
-    defaultValue: number;
+    maxValue?: number;
+    defaultValue?: number;
 }

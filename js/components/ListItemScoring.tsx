@@ -4,8 +4,10 @@ import { Body,
     ListItem,
     Right,
     Text,
-    Thumbnail} from 'native-base';
+    Thumbnail,
+    View} from 'native-base';
 import React, { ReactElement } from 'react';
+import { ParticipantScoringRadioForm } from '.';
 import { IListItemParticipantsProps } from './interfaces';
 
 export default function ListItemScoring(props: IListItemParticipantsProps): ReactElement {
@@ -13,8 +15,11 @@ export default function ListItemScoring(props: IListItemParticipantsProps): Reac
         <List>
             <ListItem>
                 <Body>
-                    <Thumbnail large source={{ uri: props.avatar }} />
-                    <Text>{ props.fullName }</Text>
+                    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                        <Thumbnail large source={{ uri: props.avatar }} />
+                        <Text>{ props.fullName }</Text>
+                    </View>
+                    <ParticipantScoringRadioForm />
                 </Body>
             </ListItem>
         </List>

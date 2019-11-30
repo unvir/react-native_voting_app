@@ -38,7 +38,7 @@ class Event extends React.Component<NavigationInjectedProps> {
                         <Right />
                     </Header>
                     <Content>
-                        <Tabs>
+                        <Tabs locked>
                         <Tab heading="Информация">
                             <TabEventInfo description={ navigation.getParam('description') }
                                             dateString={ navigation.getParam('dateString') }
