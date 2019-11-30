@@ -1,13 +1,13 @@
-import React, { ReactElement } from 'react';
-import { Left,
-    Body,
-    Right,
-    Thumbnail,
+import { Body,
+    Left,
+    List,
     ListItem,
+    Right,
     Text,
-    List} from 'native-base';
-import { IListItemParticipantsProps } from './interfaces';
+    Thumbnail} from 'native-base';
+import React, { ReactElement } from 'react';
 import { ParticipantProgressBar } from '.';
+import { IListItemParticipantsProps } from './interfaces';
 
 export default function ListItemParticipants(props: IListItemParticipantsProps): ReactElement {
     return (

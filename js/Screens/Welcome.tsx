@@ -1,25 +1,25 @@
-import React, { ReactElement } from 'react';
-import {
-  ScrollView,
-  View,
-  StatusBar,
-  Image,
-  ImageBackground
-} from 'react-native';
-import { Container,
-    Content,
+import { Body,
+    Button,
     Card,
     CardItem,
-    Button,
-    Body,
-    Text,
+    Container,
+    Content,
+    Footer,
     FooterTab,
-    Footer } from 'native-base';
-import { Col, Row, Grid } from 'react-native-easy-grid';
+    Text } from 'native-base';
+import React, { ReactElement } from 'react';
+import {
+  Image,
+  ImageBackground,
+  ScrollView,
+  StatusBar,
+  View,
+} from 'react-native';
+import { Col, Grid, Row } from 'react-native-easy-grid';
 import NavigationService from '../navigationService';
 
-const MainBGImage = require('../assets/bg2.jpg');
-const SmallLogo = require('../assets/VP_logo.png');
+import MainBGImage from '../assets/bg2.jpg';
+import SmallLogo from '../assets/VP_logo.png';
 
 export default function Welcome(): ReactElement {
     return (
@@ -28,11 +28,11 @@ export default function Welcome(): ReactElement {
         <Container>
             <Image source={MainBGImage}
                             style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                            resizeMode='cover' />
+                            resizeMode="cover" />
             <Content style={{ backgroundColor: 'transparent' }}>
                 <Grid>
                     <Card style={{ backgroundColor: 'transparent', borderColor: 'transparent'}}>
-                        <CardItem style={{ backgroundColor: 'rgba(0, 0, 0, 0.35)', margin: -8, }}>
+                        <CardItem style={{ backgroundColor: 'rgba(0, 0, 0, 0.35)', margin: -8 }}>
                             <Body>
                                 <Row style={{ paddingVertical: '5%' }}>
                                     <Col>
@@ -79,4 +79,4 @@ export default function Welcome(): ReactElement {
         </Container>
         </>
     );
-};
+}

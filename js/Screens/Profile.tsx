@@ -1,24 +1,24 @@
-import React, { ReactElement } from 'react';
-import { screenStyles } from './styles';
-import {
-    StatusBar,
-    Image
-} from 'react-native';
-import { ListItemEvents } from '../components';
-import { Container,
+import { Body,
+    Button,
+    Col,
+    Container,
     Content,
     Grid,
-    Row,
-    Col,
-    Header, 
-    Left,
-    Body,
-    Right,
-    List,
-    Title,
+    Header,
     Icon,
-    Button} from 'native-base';
+    Left,
+    List,
+    Right,
+    Row,
+    Title} from 'native-base';
+import React, { ReactElement } from 'react';
+import {
+    Image,
+    StatusBar,
+} from 'react-native';
 import { events } from '../../stubs.json';
+import { ListItemEvents } from '../components';
+import { screenStyles } from './styles';
 
 export default function Profile(): ReactElement {
     const eventsStub = events;
@@ -29,7 +29,7 @@ export default function Profile(): ReactElement {
             <Header span>
                 <Image source={ require('../assets/bg2.jpg') }
                             style={{ position: 'absolute', top: 0, left: 0, width: '130%', height: '100%' }}
-                            resizeMode='cover' />
+                            resizeMode="cover" />
                 <Left />
                 <Body>
                     <Title>Мои события</Title>
@@ -46,7 +46,7 @@ export default function Profile(): ReactElement {
                         <Col>
                             <List dataArray={ eventsStub }
                                 renderRow={ ListItemEvents }
-                                keyExtractor={ item => item.id } />
+                                keyExtractor={ (item) => item.id } />
                         </Col>
                     </Row>
                 </Grid>

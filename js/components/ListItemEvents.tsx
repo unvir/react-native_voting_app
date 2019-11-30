@@ -1,10 +1,10 @@
-import React, { ReactElement } from 'react';
-import { Left,
-    Body,
-    Right,
-    Thumbnail,
+import { Body,
+    Left,
     ListItem,
-    Text} from 'native-base';
+    Right,
+    Text,
+    Thumbnail} from 'native-base';
+import React, { ReactElement } from 'react';
 import NavigationService from '../navigationService';
 import { IListItemEventsProps } from './interfaces';
 
@@ -25,7 +25,7 @@ export default function ListItemEvents(props: IListItemEventsProps): ReactElemen
             </Left>
             <Body style={{ flexGrow: 6 }}>
                 <Text numberOfLines={ 1 }>{ title }</Text>
-                <Text note numberOfLines={ 2 } ellipsizeMode='tail'>{ description }</Text>
+                <Text note numberOfLines={ 2 } ellipsizeMode="tail">{ description }</Text>
             </Body>
             <Right style={{ flexGrow: 2 }}>
                 <Text note>{ dateString }</Text>

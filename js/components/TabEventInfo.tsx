@@ -1,8 +1,8 @@
+import { Body, Button, Card, CardItem, Col, Grid, Icon, Row, Tab, Text, Toast, View } from 'native-base';
 import React, { ReactElement } from 'react';
-import { Grid, Row, Card, CardItem, Body, Col, Text, Icon, View, Button, Toast, Tab } from 'native-base';
 import { ITabEventInfoProps } from './interfaces';
 
-export default function EventInfoTab(props: ITabEventInfoProps): ReactElement {
+export default function TabEventInfo(props: ITabEventInfoProps): ReactElement {
     return (
         <>
             <Grid>
@@ -39,10 +39,10 @@ export default function EventInfoTab(props: ITabEventInfoProps): ReactElement {
                     <Col style={{ paddingHorizontal: 18 }}>
                         <Button full
                                 iconLeft
-                                onPress={()=> Toast.show({
-                                    text: 'Добавлено в список событий'
+                                onPress={() => Toast.show({
+                                    text: 'Добавлено в список событий',
                                 })}>
-                            <Icon name='add' />
+                            <Icon name="add" />
                             <Text>В мои события</Text>
                         </Button>
                     </Col>

@@ -1,3 +1,3 @@
-import EventInfoTab from './TabEventInfo';
+import TabEventInfo from './TabEventInfo';
 
-export default EventInfoTab;
+export default TabEventInfo;

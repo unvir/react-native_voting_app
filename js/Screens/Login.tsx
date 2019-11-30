@@ -1,21 +1,21 @@
-import React, { ReactElement } from 'react';
-import { screenStyles } from './styles';
-import {
-    StatusBar,
-    Image,
-    Text
-} from 'react-native';
-import { Container,
-    Content,
-    Grid,
-    Row,
+import { Button,
     Col,
+    Container,
+    Content,
     Form,
+    Grid,
+    Input,
     Item,
     Label,
-    Button,
-    Input } from 'native-base';
+    Row } from 'native-base';
+import React, { ReactElement } from 'react';
+import {
+    Image,
+    StatusBar,
+    Text,
+} from 'react-native';
 import NavigationService from '../navigationService';
+import { screenStyles } from './styles';
 
 export default function Login(): ReactElement {
     return (

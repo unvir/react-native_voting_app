@@ -1,5 +1,5 @@
+import { Body, Col, Grid, Left, List, ListItem, Right, Row, Tab, Text, Thumbnail, View } from 'native-base';
 import React, { ReactElement } from 'react';
-import { Grid, Row, Body, Col, Text, List, ListItem, Left, Thumbnail, Right, Tab, View } from 'native-base';
 import { ListItemParticipants } from '.';
 import { ITabEventParticipantsProps } from './interfaces';
 
@@ -10,7 +10,7 @@ export default function EventParticipantsTab(props: ITabEventParticipantsProps):
                 <Col>
                     <List dataArray={ props.participants }
                             renderRow={ ListItemParticipants }
-                            keyExtractor={ item => item.id } />
+                            keyExtractor={ (item) => item.id } />
                 </Col>
             </Row>
         </Grid>

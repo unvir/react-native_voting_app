@@ -1,27 +1,27 @@
-import React from 'react';
-import {
-    StatusBar,
-    Image
-} from 'react-native';
-import { withNavigation, NavigationInjectedProps } from 'react-navigation';
-import { TabEventInfo, TabEventParticipants } from '../components';
-import { Container,
+import { Body,
+    Col,
+    Container,
     Content,
     Grid,
-    Row,
-    Col,
-    Header, 
+    Header,
     Left,
-    Body,
     Right,
+    Row,
+    Tab,
+    Tabs,
     Text,
     Title,
-    Tabs,
-    Tab
 } from 'native-base';
+import React from 'react';
+import {
+    Image,
+    StatusBar,
+} from 'react-native';
+import { NavigationInjectedProps, withNavigation } from 'react-navigation';
+import { TabEventInfo, TabEventParticipants, TabEventScoring } from '../components';
 
 class Event extends React.Component<NavigationInjectedProps> {
-    render() {
+    public render() {
         const { navigation } = this.props;
         return (
             <>
@@ -30,7 +30,7 @@ class Event extends React.Component<NavigationInjectedProps> {
                     <Header hasTabs span>
                         <Image source={ require('../assets/bg2.jpg') }
                                 style={{ position: 'absolute', top: 0, left: 0, width: '130%', height: '130%' }}
-                                resizeMode='cover' />
+                                resizeMode="cover" />
                         <Left />
                         <Body>
                             <Title>{ navigation.getParam('title') }</Title>
@@ -40,8 +40,7 @@ class Event extends React.Component<NavigationInjectedProps> {
                     <Content>
                         <Tabs>
                         <Tab heading="Информация">
-                            <TabEventInfo title={ navigation.getParam('title') }
-                                            description={ navigation.getParam('description') }
+                            <TabEventInfo description={ navigation.getParam('description') }
                                             dateString={ navigation.getParam('dateString') }
                                             timeString={ navigation.getParam('timeString') }
                                             location={ navigation.getParam('location') } />
@@ -49,15 +48,9 @@ class Event extends React.Component<NavigationInjectedProps> {
                         <Tab heading="Участники">
                             <TabEventParticipants participants={ navigation.getParam('participants') }/>
                         </Tab>
-                            <Tab heading="Оценивание">
-                                <Grid>
-                                    <Row>
-                                        <Col>
-                                            <Text>{ navigation.getParam('imageLink') }</Text>
-                                        </Col>
-                                    </Row>
-                                </Grid>
-                            </Tab>
+                        <Tab heading="Оценивание">
+                            <TabEventScoring participants={ navigation.getParam('participants') }/>
+                        </Tab>
                         </Tabs>
                     </Content>
                 </Container>

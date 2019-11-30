@@ -1,11 +1,11 @@
-import Welcome from './Welcome';
+import Event from './Event';
 import Login from './Login';
 import Profile from './Profile';
-import Event from './Event';
+import Welcome from './Welcome';
 
 export {
-    Welcome,
+    Event,
     Login,
+    Welcome,
     Profile,
-    Event
-}
+};

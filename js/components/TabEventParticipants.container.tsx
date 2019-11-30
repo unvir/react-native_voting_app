@@ -1,3 +1,3 @@
-import EventParticipantsTab from './TabEventParticipants';
+import TabEventParticipants from './TabEventParticipants';
 
-export default EventParticipantsTab;
+export default TabEventParticipants;

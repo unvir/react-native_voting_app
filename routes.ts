@@ -1,27 +1,27 @@
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import { Welcome, Login, Profile, Event } from './js/Screens';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import { Event, Login, Profile, Welcome } from './js/Screens';
 
 const AppNavigator = createStackNavigator({
-        Welcome: {
-            screen: Welcome
+        Event: {
+            screen: Event,
         },
         Login: {
-            screen: Login
+            screen: Login,
         },
         Profile: {
-            screen: Profile
+            screen: Profile,
         },
-        Event: {
-            screen: Event
-        }
+        Welcome: {
+            screen: Welcome,
+        },
     },
     {
-        initialRouteName: 'Welcome',
         defaultNavigationOptions: {
-            header: null
-        }
-    }
+            header: null,
+        },
+        initialRouteName: 'Welcome',
+    },
 );
-  
+
 export default createAppContainer(AppNavigator);
