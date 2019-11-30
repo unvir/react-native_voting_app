@@ -25,3 +25,19 @@ export const participantScoringForm = StyleSheet.create({
         color: '#333',
     },
 });
+
+export const participantScoringAvatar = StyleSheet.create({
+    avatar: {
+        backgroundColor: '#fff',
+        borderRadius: 50,
+        height: 100,
+        transform: [{ translateY: -5 }],
+        width: 100,
+    },
+    avatarContainer: {
+        backgroundColor: 'steelblue',
+        borderRadius: 50,
+        height: 100,
+        width: 100,
+    },
+});

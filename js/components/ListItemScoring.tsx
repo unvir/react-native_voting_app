@@ -9,6 +9,7 @@ import { Body,
 import React, { ReactElement } from 'react';
 import { ParticipantScoringRadioForm } from '.';
 import { IListItemParticipantsProps } from './interfaces';
+import { participantScoringAvatar } from './styles';
 
 export default function ListItemScoring(props: IListItemParticipantsProps): ReactElement {
     return (
@@ -16,7 +17,10 @@ export default function ListItemScoring(props: IListItemParticipantsProps): Reac
             <ListItem>
                 <Body>
                     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                        <Thumbnail large source={{ uri: props.avatar }} />
+                        <View style={ participantScoringAvatar.avatarContainer }>
+                            <Thumbnail source={{ uri: props.avatar }}
+                                        style={ participantScoringAvatar.avatar } />
+                        </View>
                         <Text>{ props.fullName }</Text>
                     </View>
                     <ParticipantScoringRadioForm />
