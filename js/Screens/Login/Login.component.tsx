@@ -1,5 +1,8 @@
 import {
+  Body,
   Button,
+  Card,
+  CardItem,
   Col,
   Container,
   Content,
@@ -15,7 +18,23 @@ import {Image, StatusBar, Text} from 'react-native';
 import NavigationService from '../../navigationService';
 import {screenStyles} from '../styles';
 
-export default function Login(): ReactElement {
+interface ILoginProps {
+  errorMessage: string | null;
+  isAuthorizationPending: boolean;
+  isAuthorized: boolean;
+  makeLogin: (login: string, password: string, callback: () => void) => {};
+}
+
+export default function Login(props: ILoginProps): ReactElement {
+  const {errorMessage, isAuthorizationPending, isAuthorized, makeLogin} = props;
+  const [loginValue, onChangeLogin] = React.useState('');
+  const [passwordValue, onChangePassword] = React.useState('');
+
+  if (isAuthorized) {
+    NavigationService.navigate('Profile');
+    return (<></>);
+  }
+
   return (
     <>
       <StatusBar barStyle="light-content" backgroundColor="#343434" />
@@ -41,7 +60,10 @@ export default function Login(): ReactElement {
                     <Col>
                       <Item regular style={screenStyles.formItem}>
                         <Label>Логин</Label>
-                        <Input />
+                        <Input
+                          value={loginValue}
+                          onChangeText={onChangeLogin}
+                        />
                       </Item>
                     </Col>
                   </Row>
@@ -49,7 +71,11 @@ export default function Login(): ReactElement {
                     <Col>
                       <Item regular style={screenStyles.formItem}>
                         <Label>Пароль</Label>
-                        <Input />
+                        <Input
+                          secureTextEntry={true}
+                          value={passwordValue}
+                          onChangeText={onChangePassword}
+                        />
                       </Item>
                     </Col>
                   </Row>
@@ -61,7 +87,12 @@ export default function Login(): ReactElement {
                 <Button
                   light
                   full
-                  onPress={() => NavigationService.navigate('Profile')}>
+                  disabled={isAuthorizationPending}
+                  onPress={() => {
+                    makeLogin(loginValue, passwordValue, () => {
+                      NavigationService.navigate('Profile');
+                    });
+                  }}>
                   <Text>Войти</Text>
                 </Button>
               </Col>
@@ -76,6 +107,19 @@ export default function Login(): ReactElement {
                 <Text style={{color: '#ffffff'}}>Зарегистрируйтесь</Text>
               </Col>
             </Row>
+            {errorMessage && (
+              <Row>
+                <Col>
+                  <Card style={{backgroundColor: 'transparent'}}>
+                    <CardItem>
+                      <Body>
+                        <Text style={{color: 'red'}}>{errorMessage}</Text>
+                      </Body>
+                    </CardItem>
+                  </Card>
+                </Col>
+              </Row>
+            )}
           </Grid>
         </Content>
       </Container>
