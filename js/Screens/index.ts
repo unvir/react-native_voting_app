@@ -3,9 +3,4 @@ import Login from './Login';
 import Profile from './Profile';
 import Welcome from './Welcome';
 
-export {
-    Event,
-    Login,
-    Welcome,
-    Profile,
-};
+export {Event, Login, Welcome, Profile};

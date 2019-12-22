@@ -2,18 +2,18 @@ import ListItemEvents from './ListItemEvents';
 import ListItemParticipants from './ListItemParticipants';
 import ListItemScoring from './ListItemScoring';
 import ParticipantProgressBar from './ParticipantProgressBar';
-import ParticipantScoringRadioForm from './ParticipantScoringRadioForm.container';
-import TabEventInfo from './TabEventInfo.container';
-import TabEventParticipants from './TabEventParticipants.container';
-import TabEventScoring from './TabEventScoring.container';
+import ParticipantScoringRadioForm from './ParticipantScoringRadioForm';
+import TabEventInfo from './TabEventInfo';
+import TabEventParticipants from './TabEventParticipants';
+import TabEventScoring from './TabEventScoring';
 
 export {
-    TabEventInfo,
-    TabEventParticipants,
-    TabEventScoring,
-    ListItemEvents,
-    ListItemParticipants,
-    ListItemScoring,
-    ParticipantProgressBar,
-    ParticipantScoringRadioForm,
+  TabEventInfo,
+  TabEventParticipants,
+  TabEventScoring,
+  ListItemEvents,
+  ListItemParticipants,
+  ListItemScoring,
+  ParticipantProgressBar,
+  ParticipantScoringRadioForm,
 };
