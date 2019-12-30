@@ -8,7 +8,7 @@ const normalizeProgress = (progress: number) =>
 
 const TextInformation = (progressString: string): ReactElement => (
   <Text note>
-    {progressString}/{MAX_PROGRESS_VALUE}
+    {progressString}%{/*/{MAX_PROGRESS_VALUE}*/}
   </Text>
 );
 
@@ -16,7 +16,7 @@ export default function ParticipantProgressBar({
   progress,
   textInfo = true,
 }: IProgressBarProps): ReactElement {
-  const progressString = normalizeProgress(progress).toFixed(1);
+  const progressString = progress * 100;//normalizeProgress(progress).toFixed(1);
   return (
     <>
       {textInfo === true ? TextInformation(progressString) : ''}

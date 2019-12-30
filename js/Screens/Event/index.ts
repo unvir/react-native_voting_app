@@ -1,1 +1,1 @@
-export {default} from './Event.component';
+export {default} from './Event.container';

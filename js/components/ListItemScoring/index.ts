@@ -1,1 +1,1 @@
-export {default} from './ListItemScoring.component';
+export {default} from './ListItemScoring.container';

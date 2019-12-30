@@ -18,6 +18,7 @@ export default class ParticipantScoringRadioFormContainer extends Component<
       active: props.defaultValue || 0,
     };
     this.setActive = active => {
+      this.props.changeCallback(active);
       this.setState({
         active,
       });

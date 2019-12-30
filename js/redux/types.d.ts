@@ -5,10 +5,36 @@ interface IAction<T> {
 
 interface IGlobalState {
   auth: IAuthState;
+  profile: IProfileState;
+  participants: IParticipantsState;
+}
+
+interface IParticipantsState {
+  participants: IEventParticipantsList[];
+  errorMessage: string;
+  isParticipantsPending: boolean;
+}
+
+interface IParticipantsGetFromEvent {
+  eventId: number;
+}
+
+interface IParticipantsGetFromEventError {
+  message: string;
 }
 
 interface IProfileState {
-  featuredEvents: IEventsUserListData[];
+  featuredEvents: IEventsUserList[];
+  errorMessage: string;
+  isFeaturedEventsPending: boolean;
+}
+
+interface IProfileGetFeaturedError {
+  message: string;
+}
+
+interface IProfileGetFeatured {
+  userId: number;
 }
 
 interface IAuthState {

@@ -10,17 +10,17 @@ interface IEvent {
   title: string;
   description: string;
   location?: string;
-  date: Date | null;
+  date: string;
   participants?: IEventParticipant;
 }
 
 // tslint:disable-next-line:no-empty-interface
-export interface IListItemParticipantsProps extends IEventParticipant {}
+export interface IListItemParticipantsProps extends IEventParticipantsList {}
 // tslint:disable-next-line:no-empty-interface
 export interface IListItemEventsProps extends IEvent {}
 
 export interface ITabEventParticipantsProps {
-  participants: IEventParticipant[];
+  participants: IEventParticipantsList[];
 }
 
 export interface ITabEventInfoProps {

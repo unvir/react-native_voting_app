@@ -9,6 +9,8 @@ import {
   View,
 } from 'native-base';
 import React, {ReactElement} from 'react';
+import ScoresAPI from '../../API/ScoresAPI';
+
 import {ParticipantScoringRadioForm} from '../';
 import {IListItemParticipantsProps} from '../interfaces';
 import {participantScoringAvatar} from '../styles';
@@ -30,7 +32,9 @@ export default function ListItemScoring(
             </View>
             <Text>{props.fullName}</Text>
           </View>
-          <ParticipantScoringRadioForm />
+          <ParticipantScoringRadioForm
+            changeCallback={() => ScoresAPI.score()}
+          />
         </Body>
       </ListItem>
     </List>

@@ -17,21 +17,32 @@ import React, {ReactElement} from 'react';
 import {Image, StatusBar} from 'react-native';
 import {events} from '../../../stubs.json';
 import {ListItemEvents} from '../../components';
+import container from './Profile.container';
 
 interface IProfileProps {
-  eventsList: object[];
+  errorMessage: string;
+  featuredEvents: IEventsUserList[];
+  isFeaturedEventsPending: boolean;
+  userId: number;
+  fetchEvents: (userId: number) => {};
 }
 
-export default class Profile extends React.Component<IProfileProps, any> {
+export default class Profile extends React.Component<IProfileProps> {
   constructor(props: IProfileProps) {
     super(props);
   }
 
+  public componentDidMount(): void {
+    const {userId, fetchEvents} = this.props;
+
+    fetchEvents(userId);
+  }
+
   public render() {
-    const eventsStub = events;
+    const {featuredEvents} = this.props;
     return (
       <>
-        <StatusBar barStyle="light-content" backgroundColor="#343434"/>
+        <StatusBar barStyle="light-content" backgroundColor="#343434" />
         <Container>
           <Header span>
             <Image
@@ -45,13 +56,13 @@ export default class Profile extends React.Component<IProfileProps, any> {
               }}
               resizeMode="cover"
             />
-            <Left/>
+            <Left />
             <Body>
               <Title>Мои события</Title>
             </Body>
             <Right>
               <Button transparent>
-                <Icon name="settings"/>
+                <Icon name="settings" />
               </Button>
             </Right>
           </Header>
@@ -60,7 +71,7 @@ export default class Profile extends React.Component<IProfileProps, any> {
               <Row>
                 <Col>
                   <List
-                    dataArray={eventsStub}
+                    dataArray={featuredEvents}
                     renderRow={ListItemEvents}
                     keyExtractor={item => item.id}
                   />

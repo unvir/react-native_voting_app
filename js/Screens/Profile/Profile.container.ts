@@ -1,32 +1,31 @@
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
-import EventsAPI from '../../API/EventsAPI';
 
-/*import * as authActions from '../../redux/actions/auth';
-import * as authSelectors from '../../redux/selectors/auth';*/
+import EventsAPI from '../../API/EventsAPI';
 import Profile from './Profile.component';
 
+import * as profileActions from '../../redux/actions/profile';
+import * as authSelectors from '../../redux/selectors/auth';
+import * as profileSelectors from '../../redux/selectors/profile';
+
 const mapStateToProps = (state: IGlobalState) => ({
-  /*errorMessage: authSelectors.getErrorMessage(state),
-  isAuthorizationPending: authSelectors.isAuthorizationPending(state),
-  isAuthorized: authSelectors.isAuthorized(state),*/
+  errorMessage: profileSelectors.getErrorMessage(state),
+  featuredEvents: profileSelectors.getFeaturedEvents(state),
+  isFeaturedEventsPending: profileSelectors.isFeaturedEventsPending(state),
+  userId: authSelectors.getUserId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  /*makeLogin: async (username: string, password: string, successCallback?: () => {}) => {
-    dispatch(authActions.login());
+  fetchEvents: async (userId: number) => {
+    dispatch(profileActions.getFeatured());
 
     try {
-      const { data } = await AuthAPI.login(username, password);
-      dispatch(authActions.loginSuccess(data));
-
-      if (successCallback) {
-        successCallback();
-      }
-    } catch (e) {
-      dispatch(authActions.loginError(e.message || e));
+      const { data } = await EventsAPI.getFeaturedList(userId);
+      dispatch(profileActions.getFeaturedSuccess(data));
+    } catch (error) {
+      dispatch(profileActions.getFeaturedError(error.message || error));
     }
-  },*/
+  },
 });
 
 export default connect(

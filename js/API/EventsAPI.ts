@@ -5,8 +5,8 @@ class EventsAPI extends BaseAPI {
     super('events/');
   }
 
-  public getList(userId: number): Promise<IEventsUserListData> {
-    return this.get(`user/${userId}`) as Promise<IEventsUserListData>;
+  public getFeaturedList(userId: number): Promise<IEventParticipantsListData> {
+    return this.get(`user/${userId}`) as Promise<IEventParticipantsListData>;
   }
 }
 

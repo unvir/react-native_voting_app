@@ -17,10 +17,30 @@ import {
   TabEventParticipants,
   TabEventScoring,
 } from '../../components';
+import * as authSelectors from '../../redux/selectors/auth';
+import * as participantsSelectors from '../../redux/selectors/participants';
 
-class Event extends React.Component<NavigationInjectedProps> {
+interface IEventProps {
+  errorMessage: string;
+  isParticipantsPending: boolean;
+  participants: IEventParticipantsList[];
+  userId: number;
+  fetchParticipants: (eventId: number) => Promise<void>;
+}
+
+class Event extends React.Component<NavigationInjectedProps & IEventProps> {
+  constructor(props: NavigationInjectedProps & IEventProps) {
+    super(props);
+  }
+
+  public componentDidMount(): void {
+    const { fetchParticipants, navigation } = this.props;
+
+    fetchParticipants(navigation.getParam('id'));
+  }
+
   public render() {
-    const {navigation} = this.props;
+    const {navigation, participants, fetchParticipants} = this.props;
     return (
       <>
         <StatusBar barStyle="light-content" backgroundColor="#343434" />
@@ -44,7 +64,9 @@ class Event extends React.Component<NavigationInjectedProps> {
             <Right />
           </Header>
           <Content>
-            <Tabs locked>
+            <Tabs locked onChangeTab={() => {
+              fetchParticipants(navigation.getParam('id'));
+            }}>
               <Tab heading="Информация">
                 <TabEventInfo
                   description={navigation.getParam('description')}
@@ -55,12 +77,12 @@ class Event extends React.Component<NavigationInjectedProps> {
               </Tab>
               <Tab heading="Участники">
                 <TabEventParticipants
-                  participants={navigation.getParam('participants')}
+                  participants={participants}
                 />
               </Tab>
               <Tab heading="Оценивание">
                 <TabEventScoring
-                  participants={navigation.getParam('participants')}
+                  participants={participants}
                 />
               </Tab>
             </Tabs>

@@ -7,7 +7,7 @@ export default function ListItemEvents(
   props: IListItemEventsProps,
 ): ReactElement {
   const {imageLink, title, description} = props;
-  const date = props.date || new Date();
+  const date = new Date(props.date);
   const day = date.getDate();
   const month = date.getMonth();
   const year = date.getFullYear();

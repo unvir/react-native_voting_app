@@ -23,8 +23,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
       if (successCallback) {
         successCallback();
       }
-    } catch (e) {
-      dispatch(authActions.loginError(e.message || e));
+    } catch (error) {
+      dispatch(authActions.loginError(error.message || error));
     }
   },
 });

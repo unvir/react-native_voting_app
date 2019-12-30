@@ -1,33 +1,26 @@
 const prefix = 'PROFILE_';
 
-export type Profile = IAuthLogin | IAuthLoginSuccess | IAuthLoginError;
+export type Profile = IProfileGetFeatured | IEventsUserListData | IProfileGetFeaturedError;
 
-export const LOGIN = `${prefix}LOGIN`;
-export const LOGIN_SUCCESS = `${prefix}LOGIN_SUCCESS`;
-export const LOGIN_ERROR = `${prefix}LOGIN_ERROR`;
-export const LOGOUT = `${prefix}LOGOUT`;
+export const GET_FEATURED = `${prefix}GET_FEATURED`;
+export const GET_FEATURED_SUCCESS = `${prefix}GET_FEATURED_SUCCESS`;
+export const GET_FEATURED_ERROR = `${prefix}GET_FEATURED_ERROR`;
 
-export const loginSuccess = ({fullName, id}: IAuthLoginSuccess) => ({
+export const getFeaturedSuccess = (data: IEventsUserList[]) => ({
   payload: {
-    fullName,
-    id,
+    data,
   },
-  type: LOGIN_SUCCESS,
+  type: GET_FEATURED_SUCCESS,
 });
 
-export const loginError = (message: string) => ({
+export const getFeaturedError = (message: string) => ({
   payload: {
     message,
   },
-  type: LOGIN_ERROR,
+  type: GET_FEATURED_ERROR,
 });
 
-export const login = () => ({
+export const getFeatured = () => ({
   payload: {},
-  type: LOGIN,
-});
-
-export const logout = () => ({
-  payload: {},
-  type: LOGOUT,
+  type: GET_FEATURED,
 });

@@ -14,7 +14,7 @@ export default function ListItemParticipants(
         </Left>
         <Body>
           <Text>{props.fullName}</Text>
-          <ParticipantProgressBar progress={50} />
+          <ParticipantProgressBar progress={props.totalscore} />
         </Body>
       </ListItem>
     </List>

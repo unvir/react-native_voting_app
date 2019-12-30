@@ -1,48 +1,40 @@
-import {Auth, LOGIN, LOGIN_ERROR, LOGIN_SUCCESS, LOGOUT} from '../actions/auth';
+import {
+  GET_FEATURED,
+  GET_FEATURED_ERROR,
+  GET_FEATURED_SUCCESS,
+  Profile,
+} from '../actions/profile';
 
 export const initialState = {
-  errorMessage: null,
-  fullName: '',
-  isAuthorizationPending: false,
-  isAuthorized: false,
-  userId: null,
-} as IAuthState;
+  errorMessage: '',
+  featuredEvents: [],
+  isFeaturedEventsPending: false,
+} as IProfileState;
 
-export default function auth(
-  state = initialState as IAuthState,
-  action: IAction<Auth>,
-): IAuthState {
+export default function profile(
+  state = initialState as IProfileState,
+  action: IAction<Profile>,
+): IProfileState {
   switch (action.type) {
-    case LOGIN: {
+    case GET_FEATURED: {
       return Object.assign({}, state, {
-        isAuthorizationPending: true,
+        isFeaturedEventsPending: true,
       });
     }
 
-    case LOGIN_SUCCESS: {
-      const {fullName, id} = action.payload as IAuthLoginSuccess;
+    case GET_FEATURED_SUCCESS: {
+      const {data} = action.payload as IEventsUserListData;
       return Object.assign({}, state, {
-        fullName,
-        isAuthorizationPending: false,
-        isAuthorized: true,
-        userId: id,
+        featuredEvents: data,
+        isFeaturedEventsPending: false,
       });
     }
 
-    case LOGIN_ERROR: {
-      const {message} = action.payload as IAuthLoginError;
+    case GET_FEATURED_ERROR: {
+      const {message} = action.payload as IProfileGetFeaturedError;
       return Object.assign({}, state, {
         errorMessage: message,
-        isAuthorizationPending: false,
-        isAuthorized: false,
-      });
-    }
-
-    case LOGOUT: {
-      return Object.assign({}, state, {
-        fullName: '',
-        isAuthorized: false,
-        userId: null,
+        isFeaturedEventsPending: false,
       });
     }
 

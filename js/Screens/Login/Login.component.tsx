@@ -22,7 +22,7 @@ interface ILoginProps {
   errorMessage: string | null;
   isAuthorizationPending: boolean;
   isAuthorized: boolean;
-  makeLogin: (login: string, password: string, callback: () => void) => {};
+  makeLogin: (login: string, password: string, callback?: () => {}) => {};
 }
 
 export default function Login(props: ILoginProps): ReactElement {
@@ -32,7 +32,7 @@ export default function Login(props: ILoginProps): ReactElement {
 
   if (isAuthorized) {
     NavigationService.navigate('Profile');
-    return (<></>);
+    return <></>;
   }
 
   return (
