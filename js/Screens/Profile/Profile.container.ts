@@ -4,6 +4,8 @@ import {Dispatch} from 'redux';
 import EventsAPI from '../../API/EventsAPI';
 import Profile from './Profile.component';
 
+import NavigationService from '../../navigationService';
+import * as authActions from '../../redux/actions/auth';
 import * as profileActions from '../../redux/actions/profile';
 import * as authSelectors from '../../redux/selectors/auth';
 import * as profileSelectors from '../../redux/selectors/profile';
@@ -25,6 +27,10 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
     } catch (error) {
       dispatch(profileActions.getFeaturedError(error.message || error));
     }
+  },
+  logout: () => {
+    dispatch(authActions.logout());
+    NavigationService.navigate('Login');
   },
 });
 

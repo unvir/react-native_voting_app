@@ -8,9 +8,11 @@ import Event from './Event.component';
 import * as participantsActions from '../../redux/actions/participants';
 import * as authSelectors from '../../redux/selectors/auth';
 import * as participantsSelectors from '../../redux/selectors/participants';
+import * as profileSelectors from '../../redux/selectors/profile';
 
 const mapStateToProps = (state: IGlobalState, {navigation}: NavigationInjectedProps) => ({
   errorMessage: participantsSelectors.getErrorMessage(state),
+  featuredEvents: profileSelectors.getFeaturedEvents(state),
   isParticipantsPending: participantsSelectors.isParticipantsPending(state),
   navigation,
   participants: participantsSelectors.getParticipants(state),

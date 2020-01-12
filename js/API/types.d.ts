@@ -5,6 +5,12 @@ interface IAuthLoginData {
   };
 }
 
+interface IAuthRegisterData {
+  data: {
+    id: number;
+  };
+}
+
 interface IEventsUserListData {
   data: IEventsUserList[];
 }

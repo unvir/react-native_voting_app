@@ -23,6 +23,7 @@ import * as participantsSelectors from '../../redux/selectors/participants';
 
 interface IEventProps {
   errorMessage: string;
+  featuredEvents: IEventsUserList[];
   isParticipantsPending: boolean;
   participants: IEventParticipantsList[];
   userId: number;
@@ -55,8 +56,9 @@ class Event extends React.Component<NavigationInjectedProps & IEventProps, IEven
   }
 
   public render() {
-    const {navigation, participants, fetchParticipants, userId} = this.props;
+    const {navigation, participants, fetchParticipants, userId, featuredEvents} = this.props;
     const eventId = navigation.getParam('id');
+    const isFeatured = featuredEvents.find((event) => event.id === eventId) !== undefined;
     const {judgeAccess} = this.state;
     const TAB_INDEX_PARTICIPANTS = 1;
     return (
@@ -95,6 +97,7 @@ class Event extends React.Component<NavigationInjectedProps & IEventProps, IEven
                   dateString={navigation.getParam('dateString')}
                   timeString={navigation.getParam('timeString')}
                   location={navigation.getParam('location')}
+                  isFeatured={isFeatured}
                 />
               </Tab>
               <Tab heading="Участники">

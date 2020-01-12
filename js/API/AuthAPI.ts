@@ -11,6 +11,14 @@ class AuthAPI extends BaseAPI {
       password,
     }) as Promise<IAuthLoginData>;
   }
+
+  public register(login: string, password: string, fullName: string): Promise<IAuthRegisterData> {
+    return this.post('register', {
+      fullName,
+      login,
+      password,
+    }) as Promise<IAuthRegisterData>;
+  }
 }
 
 export default new AuthAPI();

@@ -14,6 +14,7 @@ import React, {ReactElement} from 'react';
 import {ITabEventInfoProps} from '../interfaces';
 
 export default function TabEventInfo(props: ITabEventInfoProps): ReactElement {
+  const {location, dateString, timeString, description, isFeatured} = props;
   return (
     <>
       <Grid>
@@ -24,7 +25,7 @@ export default function TabEventInfo(props: ITabEventInfoProps): ReactElement {
               name="pin"
               style={{color: '#787878', fontSize: 20, marginRight: 10}}
             />
-            <Text style={{color: '#787878'}}>{props.location}</Text>
+            <Text style={{color: '#787878'}}>{location}</Text>
           </Col>
         </Row>
         <Row
@@ -34,14 +35,14 @@ export default function TabEventInfo(props: ITabEventInfoProps): ReactElement {
               name="calendar"
               style={{color: '#787878', fontSize: 20, marginRight: 10}}
             />
-            <Text style={{color: '#787878'}}>{props.dateString}</Text>
+            <Text style={{color: '#787878'}}>{dateString}</Text>
           </Col>
           <Col style={{flex: 1, flexDirection: 'row'}}>
             <Icon
               name="time"
               style={{color: '#787878', fontSize: 20, marginRight: 10}}
             />
-            <Text style={{color: '#787878'}}>{props.timeString}</Text>
+            <Text style={{color: '#787878'}}>{timeString}</Text>
           </Col>
         </Row>
         <Row>
@@ -49,27 +50,29 @@ export default function TabEventInfo(props: ITabEventInfoProps): ReactElement {
             <Card transparent>
               <CardItem>
                 <Body>
-                  <Text numberOfLines={7}>{props.description}</Text>
+                  <Text numberOfLines={7}>{description}</Text>
                 </Body>
               </CardItem>
             </Card>
           </Col>
         </Row>
-        <Row>
-          <Col style={{paddingHorizontal: 18}}>
-            <Button
-              full
-              iconLeft
-              onPress={() =>
-                Toast.show({
-                  text: 'Добавлено в список событий',
-                })
-              }>
-              <Icon name="add" />
-              <Text>В мои события</Text>
-            </Button>
-          </Col>
-        </Row>
+        {!isFeatured && (
+          <Row>
+            <Col style={{paddingHorizontal: 18}}>
+              <Button
+                full
+                iconLeft
+                onPress={() =>
+                  Toast.show({
+                    text: 'Добавлено в список событий',
+                  })
+                }>
+                <Icon name="add" />
+                <Text>В мои события</Text>
+              </Button>
+            </Col>
+          </Row>
+        )}
         <Row>
           <Col>
             <Text />

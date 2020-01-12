@@ -25,6 +25,7 @@ interface IProfileProps {
   isFeaturedEventsPending: boolean;
   userId: number;
   fetchEvents: (userId: number) => {};
+  logout: () => {};
 }
 
 export default class Profile extends React.Component<IProfileProps> {
@@ -39,7 +40,7 @@ export default class Profile extends React.Component<IProfileProps> {
   }
 
   public render() {
-    const {featuredEvents} = this.props;
+    const {featuredEvents, logout} = this.props;
     return (
       <>
         <StatusBar barStyle="light-content" backgroundColor="#343434" />
@@ -56,13 +57,27 @@ export default class Profile extends React.Component<IProfileProps> {
               }}
               resizeMode="cover"
             />
-            <Left />
+            <Left>
+              <Button
+                transparent
+                onPress={() => {
+                  //
+                }}
+              >
+                <Icon name="search" />
+              </Button>
+            </Left>
             <Body>
               <Title>Мои события</Title>
             </Body>
             <Right>
-              <Button transparent>
-                <Icon name="settings" />
+              <Button
+                transparent
+                onPress={() => {
+                  logout();
+                }}
+              >
+                <Icon name="exit" />
               </Button>
             </Right>
           </Header>

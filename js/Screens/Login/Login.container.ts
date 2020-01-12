@@ -27,6 +27,20 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
       dispatch(authActions.loginError(error.message || error));
     }
   },
+  makeRegistration: async (username: string, password: string, fullName: string, successCallback?: () => {}) => {
+    dispatch(authActions.register({username, password, fullName}));
+
+    try {
+      const { data } = await AuthAPI.register(username, password, fullName);
+      dispatch(authActions.registerSuccess(data));
+
+      if (successCallback) {
+        successCallback();
+      }
+    } catch (error) {
+      dispatch(authActions.registerError(error.message || error));
+    }
+  },
 });
 
 export default connect(

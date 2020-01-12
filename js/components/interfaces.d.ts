@@ -30,6 +30,7 @@ export interface ITabEventInfoProps {
   timeString: string;
   location: string;
   description: string;
+  isFeatured: boolean;
 }
 
 export interface IProgressBarProps {

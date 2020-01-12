@@ -58,3 +58,17 @@ interface IAuthLogin {
   username: string;
   password: string;
 }
+
+interface IAuthRegisterSuccess {
+  id: number;
+}
+
+interface IAuthRegisterError {
+  message: string;
+}
+
+interface IAuthRegister {
+  username: string;
+  password: string;
+  fullName: string;
+}
