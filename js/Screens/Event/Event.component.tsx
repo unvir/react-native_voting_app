@@ -12,6 +12,7 @@ import {
 import React from 'react';
 import {Image, StatusBar} from 'react-native';
 import {NavigationInjectedProps, withNavigation} from 'react-navigation';
+import EventsAPI from "../../API/EventsAPI";
 import {
   TabEventInfo,
   TabEventParticipants,
@@ -28,19 +29,36 @@ interface IEventProps {
   fetchParticipants: (eventId: number) => Promise<void>;
 }
 
-class Event extends React.Component<NavigationInjectedProps & IEventProps> {
+interface IEventState {
+  judgeAccess: boolean;
+}
+
+class Event extends React.Component<NavigationInjectedProps & IEventProps, IEventState> {
   constructor(props: NavigationInjectedProps & IEventProps) {
     super(props);
+
+    this.state = {
+      judgeAccess: false,
+    };
   }
 
   public componentDidMount(): void {
-    const { fetchParticipants, navigation } = this.props;
+    const { fetchParticipants, navigation, userId } = this.props;
+    const eventId = navigation.getParam('id');
 
-    fetchParticipants(navigation.getParam('id'));
+    EventsAPI.getJudgeList(eventId).then((result) => {
+      this.setState({
+        judgeAccess: result.data[0].userIds.indexOf(userId) !== -1,
+      });
+    });
+    fetchParticipants(eventId);
   }
 
   public render() {
-    const {navigation, participants, fetchParticipants} = this.props;
+    const {navigation, participants, fetchParticipants, userId} = this.props;
+    const eventId = navigation.getParam('id');
+    const {judgeAccess} = this.state;
+    const TAB_INDEX_PARTICIPANTS = 1;
     return (
       <>
         <StatusBar barStyle="light-content" backgroundColor="#343434" />
@@ -64,9 +82,13 @@ class Event extends React.Component<NavigationInjectedProps & IEventProps> {
             <Right />
           </Header>
           <Content>
-            <Tabs locked onChangeTab={() => {
-              fetchParticipants(navigation.getParam('id'));
-            }}>
+            <Tabs
+              locked
+              onChangeTab={(tabInfo) => {
+                if (tabInfo.i === TAB_INDEX_PARTICIPANTS) {
+                  fetchParticipants(eventId);
+                }
+              }}>
               <Tab heading="Информация">
                 <TabEventInfo
                   description={navigation.getParam('description')}
@@ -80,11 +102,18 @@ class Event extends React.Component<NavigationInjectedProps & IEventProps> {
                   participants={participants}
                 />
               </Tab>
-              <Tab heading="Оценивание">
-                <TabEventScoring
-                  participants={participants}
-                />
-              </Tab>
+              {
+                judgeAccess &&
+                (
+                  <Tab heading="Оценивание">
+                    <TabEventScoring
+                      eventId={navigation.getParam('id')}
+                      userId={userId}
+                      participants={participants}
+                    />
+                  </Tab>
+                )
+              }
             </Tabs>
           </Content>
         </Container>

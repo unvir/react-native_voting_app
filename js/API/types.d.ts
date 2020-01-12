@@ -19,6 +19,25 @@ interface IEventsUserList {
   // participants: IEventParticipants[];
 }
 
+interface IEventScoresFromJudgeData {
+  data: IEventScoresFromJudge[];
+}
+
+interface IEventScoresFromJudge {
+  participantId: number;
+  value: number;
+  eventId: number;
+  judgeId: number;
+}
+
+interface IEventJudgesListData {
+  data: IEventJudgesList;
+}
+
+interface IEventJudgesList {
+  userIds: number[];
+}
+
 interface IEventParticipantsListData {
   data: IEventParticipantsList[];
 }
@@ -27,5 +46,6 @@ interface IEventParticipantsList {
   id: number;
   fullName: string;
   avatar: string;
-  totalscore: string;
+  totalscore: number;
+  score?: number;
 }

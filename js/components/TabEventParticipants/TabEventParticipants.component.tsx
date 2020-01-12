@@ -12,7 +12,10 @@ export default function EventParticipantsTab(
       <Row>
         <Col>
           <List
-            dataArray={props.participants.map((p) => ({...p, totalscore: (+p.totalscore / +maxScore)}))}
+            dataArray={props.participants.map((p) =>
+                ({...p, score: p.totalscore, totalscore: (+p.totalscore / +maxScore)}))
+                .sort((a, b) => a.score - b.score)
+            }
             renderRow={ListItemParticipants}
             keyExtractor={item => item.id}
           />

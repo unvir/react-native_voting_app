@@ -21,6 +21,8 @@ export interface IListItemEventsProps extends IEvent {}
 
 export interface ITabEventParticipantsProps {
   participants: IEventParticipantsList[];
+  eventId: number;
+  userId: number;
 }
 
 export interface ITabEventInfoProps {
@@ -32,6 +34,7 @@ export interface ITabEventInfoProps {
 
 export interface IProgressBarProps {
   progress: number;
+  value?: number;
   textInfo?: boolean;
 }
 
@@ -40,6 +43,8 @@ export interface IParticipantScoringRadioFormState {
 }
 
 export interface IParticipantScoringRadioFormProps {
+  changeCallback: (active: number) => void;
   maxValue?: number;
-  defaultValue?: number;
+  max?: number;
+  value?: number;
 }

@@ -16,8 +16,10 @@ import {IListItemParticipantsProps} from '../interfaces';
 import {participantScoringAvatar} from '../styles';
 
 export default function ListItemScoring(
-  props: IListItemParticipantsProps,
+  props: IListItemParticipantsProps & IEventScoresFromJudge,
 ): ReactElement {
+  const {avatar, participantId, fullName, value, eventId, judgeId} = props;
+
   return (
     <List>
       <ListItem>
@@ -26,14 +28,15 @@ export default function ListItemScoring(
             style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
             <View style={participantScoringAvatar.avatarContainer}>
               <Thumbnail
-                source={{uri: props.avatar}}
+                source={{uri: avatar}}
                 style={participantScoringAvatar.avatar}
               />
             </View>
-            <Text>{props.fullName}</Text>
+            <Text>{fullName}</Text>
           </View>
           <ParticipantScoringRadioForm
-            changeCallback={() => ScoresAPI.score()}
+            changeCallback={(score) => ScoresAPI.score(eventId, judgeId, participantId, score)}
+            value={value}
           />
         </Body>
       </ListItem>

@@ -13,6 +13,10 @@ class ScoresAPI extends BaseAPI {
       userId,
     }) as Promise<unknown>;
   }
+
+  public getScoresFromJudge(eventId: number, judgeId: number): Promise<IEventScoresFromJudgeData> {
+    return this.get(`${eventId}/${judgeId}`) as Promise<IEventScoresFromJudgeData>;
+  }
 }
 
 export default new ScoresAPI();

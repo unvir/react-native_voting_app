@@ -6,20 +6,21 @@ const MAX_PROGRESS_VALUE = 100;
 const normalizeProgress = (progress: number) =>
   progress > MAX_PROGRESS_VALUE ? MAX_PROGRESS_VALUE : progress;
 
-const TextInformation = (progressString: string): ReactElement => (
+const TextInformation = (progressString: number, progressValue?: number): ReactElement => (
   <Text note>
-    {progressString}%{/*/{MAX_PROGRESS_VALUE}*/}
+      {progressString}%{/*/{MAX_PROGRESS_VALUE}*/}
   </Text>
 );
 
 export default function ParticipantProgressBar({
   progress,
+  value,
   textInfo = true,
 }: IProgressBarProps): ReactElement {
-  const progressString = progress * 100;//normalizeProgress(progress).toFixed(1);
+  const progressString = progress * 100; // normalizeProgress(progress).toFixed(1);
   return (
     <>
-      {textInfo === true ? TextInformation(progressString) : ''}
+      {value && (<Text note>Баллы: {value}</Text>)}
       <View
         style={{
           backgroundColor: 'rgba(200, 200, 200, 0.2)',
@@ -34,6 +35,7 @@ export default function ParticipantProgressBar({
           }}
         />
       </View>
+      {textInfo === true ? TextInformation(progressString) : ''}
     </>
   );
 }

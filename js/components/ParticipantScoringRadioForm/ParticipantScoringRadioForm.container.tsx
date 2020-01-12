@@ -15,7 +15,7 @@ export default class ParticipantScoringRadioFormContainer extends Component<
   constructor(props: IParticipantScoringRadioFormProps) {
     super(props);
     this.state = {
-      active: props.defaultValue || 0,
+      active: props.value || 0,
     };
     this.setActive = active => {
       this.props.changeCallback(active);
@@ -26,8 +26,16 @@ export default class ParticipantScoringRadioFormContainer extends Component<
 
     const MAX_SCORING_VALUE = 10;
 
-    for (let i = 0; i <= (props.defaultValue || MAX_SCORING_VALUE); i++) {
+    for (let i = 0; i <= (props.max || MAX_SCORING_VALUE); i++) {
       this.contentButtons.push(i);
+    }
+  }
+
+  public componentDidUpdate(prevProps: IParticipantScoringRadioFormProps) {
+    if (prevProps.value !== this.props.value) {
+      this.setState({
+        active: this.props.value || 0,
+      });
     }
   }
 

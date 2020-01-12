@@ -15,9 +15,9 @@ import {Col, Grid, Row} from 'react-native-easy-grid';
 import NavigationService from '../../navigationService';
 
 // @ts-ignore
-import MainBGImage from '../../assets/bg2.jpg';
+const MainBGImage = require('../../assets/bg2.jpg');
 // @ts-ignore
-import SmallLogo from '../../assets/VP_logo.png';
+const SmallLogo = require('../../assets/VP_logo.png');
 
 export default function Welcome(): ReactElement {
   return (
