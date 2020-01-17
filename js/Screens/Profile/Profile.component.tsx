@@ -5,8 +5,9 @@ import {
   Container,
   Content,
   Grid,
+  H1,
   Header,
-  Icon,
+  Icon, Input, Item, Label,
   Left,
   List,
   Right,
@@ -14,10 +15,10 @@ import {
   Title,
 } from 'native-base';
 import React, {ReactElement} from 'react';
-import {Image, StatusBar} from 'react-native';
-import {events} from '../../../stubs.json';
+import {Alert, Image, Modal, StatusBar, Text, TouchableHighlight, View} from 'react-native';
 import {ListItemEvents} from '../../components';
-import container from './Profile.container';
+import {screenStyles} from '../styles';
+import NavigationService from '../../navigationService';
 
 interface IProfileProps {
   errorMessage: string;
@@ -31,6 +32,10 @@ interface IProfileProps {
 export default class Profile extends React.Component<IProfileProps> {
   constructor(props: IProfileProps) {
     super(props);
+
+    this.state = {
+      modalVisible: false,
+    };
   }
 
   public componentDidMount(): void {
@@ -61,7 +66,9 @@ export default class Profile extends React.Component<IProfileProps> {
               <Button
                 transparent
                 onPress={() => {
-                  //
+                  this.setState({
+                    modalVisible: true,
+                  });
                 }}
               >
                 <Icon name="search" />
@@ -82,6 +89,7 @@ export default class Profile extends React.Component<IProfileProps> {
             </Right>
           </Header>
           <Content padder style={{backgroundColor: '#ffffff'}}>
+
             <Grid>
               <Row>
                 <Col>

@@ -29,6 +29,14 @@ interface IProfileState {
   isFeaturedEventsPending: boolean;
 }
 
+interface IProfileGetEventError {
+  message: string;
+}
+
+interface IProfileGetEvent {
+  eventId: number;
+}
+
 interface IProfileGetFeaturedError {
   message: string;
 }

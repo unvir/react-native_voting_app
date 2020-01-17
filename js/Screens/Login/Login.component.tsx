@@ -23,7 +23,7 @@ interface ILoginProps {
   isAuthorizationPending: boolean;
   isAuthorized: boolean;
   makeLogin: (login: string, password: string, callback?: () => void) => {};
-  makeRegistration: (username: string, password: string, fullName: string, callback?: () => void) => {};
+  makeRegistration: (login: string, password: string, fullName: string, callback?: () => void) => {};
 }
 
 const DEFAULT_AUTH_MODE = 'login';
